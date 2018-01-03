@@ -1,0 +1,78 @@
+===================================START INTRO AND SUMMARY=============================================================
+    This scratch.txt document will serve as the running notepad for the project. Other documentation may be written as
+    time goes on and the project advances, but this scratch.txt will serve as the active notepad. Below will be notes on
+    the compiler as a whole, as well as specific portions. Scanner, Parser, Linker, Assembly, etc. Each note entered
+    will be dated and boxed off for the relevant time/date it was entered like so:
+
+    Example:
+
+    ===================================12/31/2017 - START - 08:57 - JRinderer:=========================================
+        ******SUMMARY: Each section will contain a summary of the notes to follow. Today is Dec 31st 2017.
+        ---------------------------------------------------------------------------------------------------------------
+            -More Notes...
+            -...
+    ===================================12/31/2017 - END - 20:00 - JRinderer============================================
+
+    If a day's notes are subdivided for that day the format below will be used.
+
+    Example:
+
+    ===================================12/31/2017 - START - 08:57 - JRinderer:=========================================
+        ******SUMMARY: Each section will contain a summary of the notes to follow. Today is Dec 31st 2017.
+
+            -Today is December 31st 2017 and this noted repeats this information
+            -More Notes...
+        ---------------------------------------------------------------------------------------------------------------
+        ******SUMMARY: If the day's notes are subdivided then the format here will be used.
+            -This is a sub section of today's notes.
+            -This section will discuss the subdivision of notes.
+    ===================================12/31/2017 - END - 20:00 - JRinderer============================================
+
+
+    The format above will be followed throughout the notebook in order to break up time/dates and progress.
+
+    When edits are made to previous notes (for example if I re-write my types and sub-divide the operators into multiple
+    types they will be notated with in the START field, the edits will be made to the original with a **START DATE**
+    at the beginning and a **END DATE** where the edits ended. A copy of the original (only where changes made) will be
+    added to the bottom of that days note with the Original Date **ORIGINAL DATE and will be encolsed in *****
+
+    Example:
+
+    ===================================12/31/2017 - START - 09:01 - JRinderer **1/1/2018 JRinderer**:==================
+        **START 1/1/2018**
+        -Operators for KLUMP: These will need further work to break down into Sub groups mathematical vs operational
+               Mathematical: These will perform basic math:
+                    1. +
+                    2. -
+                    3. *
+                    4. /
+                    5. %
+               Comparison: These will compare values:
+                    6. <>
+                    7. <
+                    8. >
+                    9. =
+                    10. !=
+        **END 1/1/2018**
+
+        **ORIGINAL 12/31/2017 - JRinderer******************************************************************************
+           -Operators for KLUMP: These will need further work to break down into Sub groups mathematical vs operational
+               1. :
+               2. ;
+               3. .
+               4. (
+               5. )
+               6. {
+               7. }
+               8. [
+               9. ]
+               10. #
+        ***************************************************************************************************************
+    ===================================12/31/2017 - END - 11:01 - JRinderer **1/1/2018 JRinderer**:====================
+===================================END INTRO AND SUMMARY===============================================================
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+=======================================1/3/2018 - START - 1310 - JRinderer=============================================
+    ********Summary:This is a rebuild of the sample code I found with a focus on re-writing the scanner portion to be
+    easier to read with more functions to trim down and simplify. Scanner can currently scan for Words. Need to output
+    to a .txt file.
