@@ -28,6 +28,10 @@ char token[LIMIT][MAX]; // to store TOKEN TYPE
 int tokeni = 0;
 int tokenLineNums[LIMIT];
 
+char lexeme[LIMIT][MAX]; // this is the literal string VALUE IF, X, 2, 3, ANDREW, etc.
+int lexemei = 0; lexemej = 0;
+int lexemeLineNum[LIMIT];
+
 char nums[LIMIT][MAX];  // to store numbers
 int numi = 0, numj = 0;
 int numLineNums[LIMIT];

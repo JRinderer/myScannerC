@@ -41,7 +41,9 @@ TokenType getTokenType(FILE *filePntr) {
         if (chrType==1){
             build2dArry(words,wordi,wordj, chr, filePntr);
             //Now I need a method to determine if this is a KEYWORD or word.
-            printf("First word is %s",words[wordi]);
+            wordLineNums[wordi] = lneNum;
+            wordi++;wordj = 0;
+            fseek(filePntr, -1, SEEK_CUR);
         }else if(chrType==2){
             printf("% d This is a digit\n",nums[numi]);
         }else if(chrType==3){
@@ -89,9 +91,6 @@ int charType(char c) {
         return 3;
     }
 }
-
-
-
 
 int isExAcceptableChar(char c) {
     if (c == '.' || c == '(' || c == ')' || c == ',' || c =='{' || c == '}' ||

@@ -76,3 +76,14 @@
     ********Summary:This is a rebuild of the sample code I found with a focus on re-writing the scanner portion to be
     easier to read with more functions to trim down and simplify. Scanner can currently scan for Words. Need to output
     to a .txt file.
+
+        -As data is scanned in add it to a TOKEN & LEXEME field. Currently each data point is stored within a word or a
+        number type. While we can loop through these values they need to be ordered as they appear. Doing this as the
+        text is scanned ensures that the order is followed.
+
+        -Regardless of Type store literal as LEXEME. Regardless of type store token as TOKEN. LEXEME and TOKEN are new
+        arrays that will be populated with the respective TOKEN or LEXEME.
+
+        -This allows us to store the values as they are scanned in, in the order in which they are scanned.
+
+        -Once all the data is scanned in we can loop through the LEXEME and TOKEN fields and print them to a file.
