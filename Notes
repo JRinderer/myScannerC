@@ -72,7 +72,7 @@
 ===================================END INTRO AND SUMMARY===============================================================
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-=======================================1/3/2018 - START - 1310 - JRinderer=============================================
+=======================================1/3/2018 - START - 13:10 - JRinderer============================================
     ********Summary:This is a rebuild of the sample code I found with a focus on re-writing the scanner portion to be
     easier to read with more functions to trim down and simplify. Scanner can currently scan for Words. Need to output
     to a .txt file.
@@ -87,3 +87,16 @@
         -This allows us to store the values as they are scanned in, in the order in which they are scanned.
 
         -Once all the data is scanned in we can loop through the LEXEME and TOKEN fields and print them to a file.
+
+        -General outline below:
+            1. Scan through all characters.
+            2. Determine if characters are words and if so are they KEYWORDS.
+            3. Determine Token TYPES from words (KEYWORD, CONSTANT)
+            4. Determine Token Types from chars (constants, identifiers)
+            5. Determine Token Types from ints (constants[numbers], decimals [number.number]
+            6. Determine Token Types from punctuations (consider making actual symbol (=(, {={, etc).
+            7. Determine Token Types from Operators (>, <, <>, etc).
+
+        -Based on the above critiera we can store the LEXEM and TOKEN type. Modify systemsdefs.h with the above data
+        structurs.
+=======================================1/3/2018 - END - 21:11 - JRinderer==============================================

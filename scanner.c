@@ -54,6 +54,26 @@ TokenType getTokenType(FILE *filePntr) {
     return EOT;
 }
 
+int isKeyWord(char *strn){
+    int i;
+    int results = 1; //1 is false if not a keyWord then 1 otherwise 0
+
+    for(i = 0; i<42;i++){
+        if(!strcmp(keywords[i],strn));
+        results = 0;
+    }
+    return results;
+}
+
+int isOperator(char c){
+    int i;
+    int results = 1;
+
+    for(i = 0; i< 22;i++){
+        //code to check against operator array
+    }
+}
+
 void writeLnes(){}
 
 void build2dArry(char arry[LIMIT][MAX],int itemi, int itemj, char c, FILE * fPtr) {
