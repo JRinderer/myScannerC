@@ -24,7 +24,7 @@ char words[LIMIT][MAX]; // include LEXEME, and TOKENS
 int wordi = 0, wordj = 0;
 int wordLineNums[LIMIT];
 
-char token[LIMIT][MAX]; // to store TOKEN TYPE not sure this is needed.
+char * token[42]; // to store TOKEN TYPE not sure this is needed.
 int tokeni = 0;
 int tokenLineNums[LIMIT];
 

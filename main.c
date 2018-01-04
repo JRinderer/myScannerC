@@ -94,12 +94,12 @@ int main(int argc, char *argv[]) {
     // At this time, the file is good. Now let scanner.c do the work
     TokenType tokenType = UNDEF;
 
-    while ((tokenType = getTokenType(filePtr)) != EOT) {}
+    while ((tokenType = getTokenType(filePtr)) != EOT) {
 
-    //getTokenType();
-
+        getTokenType();
+    }
     /*---------/End Job-------------*/
-
     fclose(filePtr);
+    //fclose(filePtr);
     return 0;
 }

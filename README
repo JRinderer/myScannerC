@@ -15,6 +15,9 @@
 --------------------------CMake Version: 3.5 or 3.8
 --------------------------Ubuntu 16.04 LTS (NA) & Arch Linux 64 bit (4.14.9-1)
 --------------------------IDE: CLion
+--------------------------CMake files require some editing to change the directories from machine to machine
+--------------------------CMakeCache.txt contains comments for where directory changes are required and my directories
+--------------------------for Arch and Ubuntu.
 ***********************************************************************************************************************
 ---------Sources:
 -----------Source code based on the following project: Original Source code From: Lexical Analyzer Project: Loc Nguyen
