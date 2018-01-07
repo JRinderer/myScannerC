@@ -13,5 +13,6 @@ void build2dArry(char arry[LIMIT][MAX],int, int, char, FILE *);
 int isExAcceptableChar(char);
 void printTokens();
 int isKeyWord(char *);
+void build2dArryNum(char arry[LIMIT][MAX],int, int, char, FILE *);
 
 #endif //SCANNER01_SCANNER_H

@@ -53,11 +53,10 @@ TokenType getTokenType(FILE *filePntr) {
             wordi++;wordj = 0;
             fseek(filePntr, -1, SEEK_CUR);
         }else if(chrType==2){
-            build2dArry(nums,numi,numi,chr,filePntr);
+            build2dArryNum(nums,numi,numi,chr,filePntr);
             token[tokeni]="NUMBER";
             tokeni++;
             wordLineNums[wordi] = lneNum;
-            printf("% d This is a digit\n",nums[numi]);
         }else if(chrType==3){
             printf("This is the default\n");
         }
@@ -123,6 +122,16 @@ void build2dArry(char arry[LIMIT][MAX],int itemi, int itemj, char c, FILE * fPtr
     }
     arry[itemi][itemj] = '\0';
 }
+
+void build2dArryNum(char arry[LIMIT][MAX],int itemi, int itemj, char c, FILE * fPtr) {
+    arry[itemi][itemj++] = c;
+    while (charType(c = fgetc(fPtr))==2){
+
+        arry[itemi][itemj++]= mkeUprCse(c);
+    }
+    arry[itemi][itemj] = '\0';
+}
+
 
 //=====================================================================================================================
 //*********************************************************************************************************************
