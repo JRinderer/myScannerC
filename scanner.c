@@ -6,7 +6,6 @@
 #include <strings.h>
 #include <ctype.h>
 #include <memory.h>
-#include <jmorecfg.h>
 
 #include "token.h"
 #include "scanner.h"
@@ -15,7 +14,6 @@
 TokenType getTokenType(FILE *filePntr) {
     int lneNum = 1;
     char chr;
-
 //-------------------------------------Loop through Chars and scan to determine types----------------------------------
     while((chr=fgetc(filePntr))!=EOF){
         chr=mkeUprCse(chr);
@@ -40,25 +38,28 @@ TokenType getTokenType(FILE *filePntr) {
         chrType = charType(chr);
 
         if (chrType==1){
-            build2dArry(words,wordi,wordj, chr, filePntr); //builds the 2d array (forming words)
-            wordLineNums[wordi] = lneNum;
-            if(isKeyWord(words[wordi])==0){
+            build2dArry(words,intlArryi,intlArryj, chr, filePntr); //builds the 2d array (forming words)
+            wordLineNums[intlArryi] = lneNum;
+            if(isKeyWord(words[intlArryi])==0){
                 token[tokeni]="KEYWORD";
                 tokeni++;
             }else{
-                token[tokeni]="CONSTANT";
+                token[tokeni]="CONST";
                 tokeni++;
             }
             //printf("The Word is %s",words[wordi]);
-            wordi++;wordj = 0;
+            intlArryi++;intlArryj = 0;
             fseek(filePntr, -1, SEEK_CUR);
         }else if(chrType==2){
-            build2dArryNum(nums,numi,numi,chr,filePntr);
+            build2dArryNum(nums,intlArryi,intlArryj,chr,filePntr);
             token[tokeni]="NUMBER";
             tokeni++;
-            wordLineNums[wordi] = lneNum;
+            wordLineNums[intlArryi] = lneNum;
+            intlArryi++;intlArryj = 0;
+            fseek(filePntr, -1, SEEK_CUR);
         }else if(chrType==3){
-            printf("This is the default\n");
+            printf("This is the default\n"); //Here will require a deeper dive like in word to determine if the data
+                                            //type fits in a particular type. Operator punctuation. etc.
         }
     }
     printTokens();
@@ -71,7 +72,13 @@ TokenType getTokenType(FILE *filePntr) {
 void printTokens(){
     int i;
     for(i = 0; i<tokeni; i++){
-        printf("%s\t\t%s\n",token[i],words[i]);
+        if(token[i]!="NUMBER"){
+            writeLnes(token[i],words[i]);
+            //printf("%s\t\t%s\n",token[i],words[i]);
+        }else{
+            writeLnes(token[i],nums[i]);
+            //printf("%s\t\t%s\n",token[i],nums[i]);
+        }
     }
 }
 //=====================================================================================================================
@@ -108,8 +115,16 @@ int isOperator(char c){
 //=====================================================================================================================
 //*********************************************************************************************************************
 //====================This function will write data to a file may not need=============================================
-void writeLnes(){
-    //Write data to file
+void writeLnes(char * txt1, char * txt2){
+    FILE * flPntr;
+    char stngHldr[LIMIT]="";
+    strcat(stngHldr,txt1); //SEGMENTATION FALUT. POSSIBLY DUE TO PASSING CHARS BY POINTER?
+    strcat(stngHldr, "\t\t");
+    strcat(stngHldr,txt2);
+    strcat(stngHldr,"\n");
+    flPntr = fopen("scnr.sc","a");
+    fputs(stngHldr,flPntr);
+    fclose(flPntr);
 }
 //=====================================================================================================================
 //*********************************************************************************************************************
@@ -127,7 +142,7 @@ void build2dArryNum(char arry[LIMIT][MAX],int itemi, int itemj, char c, FILE * f
     arry[itemi][itemj++] = c;
     while (charType(c = fgetc(fPtr))==2){
 
-        arry[itemi][itemj++]= mkeUprCse(c);
+        arry[itemi][itemj++]= c;
     }
     arry[itemi][itemj] = '\0';
 }

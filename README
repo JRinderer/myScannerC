@@ -15,9 +15,18 @@
 --------------------------CMake Version: 3.5 or 3.8
 --------------------------Ubuntu 16.04 LTS (NA) & Arch Linux 64 bit (4.14.9-1)
 --------------------------IDE: CLion
---------------------------CMake files require some editing to change the directories from machine to machine
---------------------------CMakeCache.txt contains comments for where directory changes are required and my directories
---------------------------for Arch and Ubuntu.
+--------------------------CMake files require RELOADING when switching between OS's or verions of CMake. See
+--------------------------Instructions section for further details.
+***********************************************************************************************************************
+---------Instructions:
+------------In order for CMake to work correctly you will need to either modify the attached CMake files
+------------or if you're using an IDE you can reload the CMakeLists.txt. This will re-apply any updates. If you're using
+------------and older version than 3.8 you'll need to modify CMakeLists.txt by finding the following:
+------------cmake_minimum_required(VERSION 3.8) and editing. As an example my Ubunutu Linux uses 3.5, I change this and
+------------reload CMake, which should resolve the problem. However, if your IDE does not allow you to easily reload
+------------CMake files then you can edit them yourself. You'll need to ensure the directory the files are located in
+------------changes. Your directory tree will be different than mine, editing these paths should resolve the CMake
+------------errors your encounter.
 ***********************************************************************************************************************
 ---------Sources:
 -----------Source code based on the following project: Original Source code From: Lexical Analyzer Project: Loc Nguyen

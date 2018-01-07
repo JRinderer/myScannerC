@@ -20,8 +20,10 @@ char otherOperators[6] = {':', '+', '-', '*', '/', '%'};
 
 char delimiters[9] = {'.', '(', ')', ',', '{', '}', ';', '[', ']'};
 
+int intlArryi = 0, intlArryj =0;
+
 char words[LIMIT][MAX]; // include LEXEME, and TOKENS
-int wordi = 0, wordj = 0;
+//int wordi = 0, wordj = 0;
 int wordLineNums[LIMIT];
 
 char * token[42]; // to store TOKEN TYPE not sure this is needed.
@@ -33,7 +35,7 @@ int lexemei = 0; lexemej = 0;
 int lexemeLineNum[LIMIT];
 
 char nums[LIMIT][MAX];  // to store numbers
-int numi = 0, numj = 0;
+//int numi = 0, numj = 0;
 int numLineNums[LIMIT];
 
 char delims[LIMIT]; // to store delimiters

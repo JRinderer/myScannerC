@@ -110,8 +110,49 @@
 =======================================1/4/2018 - END 20:00 - JRinderer================================================
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-=======================================1/6/2018 - START - JRinderer====================================================
+=======================================1/6/2018 - START - 19:00 JRinderer==============================================
     ********Summary: The program is reading int's but due to how I am printing them out INT's are getting missed in the
     output. This is resulting in the TOKEN and LEXEME not always matching in cases wheren number is missing. If you
     view the test.kl file you'll notice that there are three number constants. There are 3 additional tokens at the end
     missing their LEXEME. This is due to how the data is printed in C.
+=======================================1/6/2018 - END - 21:00 - JRinderer==============================================
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+=======================================1/7/2018 - START 09:14 - JRinderer==============================================
+    ********Summary: How the 2d arrays are built and what elements seems to be causing some issue. If I use numi and
+    numj these start a 0 again, and thus will not match with the simple loop I built. Determining the best way to
+    allocate size for the array's we'll use.
+
+        -Structures - Restudy structures as it might be easier to assign data points based on a structure type.
+        Currently using STRINGS to call out the TOKEN type and pulling the LEXEME in along with it.
+
+        -Solutions to problem brought up in Summary. Drop wordi wordj numi numj variables. Keep a universal 2d array
+        loop variable as this will make reading easier and understanding what's going on. Keeping two different like
+        this can result in more confusing code. replaced wordi, wordj, numi, numj with intlArryi and intlArryj.
+
+        -Fixing a standard distance between tabs from TOKEN     LEXEME. Issue is with larger words and the tabs being
+        misaligned.
+
+        -Dynamically assigning array's as the scanner combs through characters. Based on largest word and number of
+        words contained in the source code file.
+
+            -Requires a function to determine the size of continuous data. This must be stored for the LENGTH of
+            individual words.
+
+            -Requires a method/function to determine total characters in the source code file. This will be the MAX
+            allowed characters, numbers, words etc.
+
+            -Requires another function to allocate the new size of the array.
+
+        -As of right now I can find KEYWORDS, CONSTANTS, and NUMBERS. They are labeled correctly with their appropriate
+        TOKEN and LEXEME in the format I want.
+
+        -Still need to grab operators and determine operators that do something from punctuations.
+
+        -Getting Segmentation falut when I attempt to write to a file. This was due to a mistake in understanding how
+        strcat worked. I was setting it as a variable when it's a function that applies a change to variables/strings/
+        chars.
+
+        -Program can now output to a text file in the project folder. Notes for future output destroy any existing file
+        assuming the user does not need previous work. This ensures that the new file that's being concatenated to is
+        fresh.

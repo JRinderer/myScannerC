@@ -14,5 +14,6 @@ int isExAcceptableChar(char);
 void printTokens();
 int isKeyWord(char *);
 void build2dArryNum(char arry[LIMIT][MAX],int, int, char, FILE *);
+void writeLnes(char *, char *);
 
 #endif //SCANNER01_SCANNER_H

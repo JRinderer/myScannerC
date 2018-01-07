@@ -29,8 +29,6 @@ ctype.h
 -
 memory.h
 -
-jmorecfg.h
--
 token.h
 /home/jrinder/CLionProjects/myScannerC/token.h
 scanner.h
