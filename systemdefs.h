@@ -14,11 +14,11 @@ char *keywords[42] = {"AND", "ARRAY", "ASCII", "BEGIN", "BOOL", "BREAK", "CALL",
                       "REAL", "RECORD", "RETURN", "STRING", "THEN", "TO", "TYPE", "VAR", "WHILE",
                       "WRITE", "WRITELN"};
 
-char *relationalOperators[] = {"==", "<", ">", "=!=", "=>", "=<"};
+char *relationalOperators[12] = {":=","=","<>","<",">","<=",">=","+","-","*","/","%"};
 
-char otherOperators[6] = {':', '+', '-', '*', '/', '%'};
+//char otherOperators[6] = {':', '+', '-', '*', '/', '%'};
 
-char delimiters[9] = {'.', '(', ')', ',', '{', '}', ';', '[', ']'};
+char punct[9] = {':',';','.','(',')','{','}','[',']'};
 
 int intlArryi = 0, intlArryj =0;
 

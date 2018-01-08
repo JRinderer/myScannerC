@@ -160,3 +160,29 @@
         -Next steps: make test to determine other TOKE types - operators, punctuation, etc.
 
 =======================================1/7/2018 - END 18:11 - JRinderer================================================
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+=======================================1/8/2018 - START 13:12 - JRinderer==============================================
+    ********Summary: With the program able to break out KEYWORDS, CONSTANTS, and NUMBERS generically the next step is
+    to break this down further. KEYWORDS can remain, CONSTANTS should be broken down into further, it already handles
+    NUMBERS but also need to break out decimals and ASCII. THESE will be additional TOKENS with their associated LEXEME.
+    The general TOKEN categories are listed below.
+
+        A. Notes on TOKENS/LEXEME possible adjustments and types.
+            1. CONSTANT - numbers, strings of chars. Can be broken down into NUMBER, ASCII, DECIMAL.
+            2. IDENTIFIER - X, BALANCE, and other variables the programmer might be setting up.
+            3. KEYWORDS - IF, THEN, PROGRAM etc. This are broken out and listed. CHANGE KEYWORD to be actual LEXEME.
+            4. OPERATORS - :=. +, etc, refine TOKEN to be actual symbol.
+            5. PUNCTUATION - {, {, ;, etc. Refine TOKEN to be actual symbol.
+
+        B. Break KEYWORD into the actual LEXEME being used as opposed to KEYWORD.
+        C. Break CONSTANT into NUMBER, ASCII, and DECIMAL.
+            1. Need a function to determine DECIMAL, NUMBER or ASCII.
+            2. This is sort of done, but not sure how to handle decimal. Possibly determine in the function that checks
+            to see if char is numeric, to also check for decimal.
+        D. For IDENTIFIER need to differentiate between: KEYWORDS and CONSTANTS.
+            1. Anything that is a single char, or a full word without some indicator is an IDENTIFIER.
+            2. Possibly need a new function to determine if a WORD is enclosed within "" or ''.
+        E. Re-read KLUMP Grammar, there's nothing for '' or "" and these are typically CHAR or STRING delimiters.
+        F. Added the relational operators and punctuation for the language toe systemdefs.h
+

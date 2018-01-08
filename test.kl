@@ -1,2 +1,4 @@
-IF James 13 OR 132 John AND X THEN
-IF X AND A THEN 31 Tim
+if (a > 0)
+	then b:=1+5;
+	else b:=2;
+

@@ -64,26 +64,29 @@
             41. WRITE
             42. WRITELN
 
-         -Operators for KLUMP: These will need further work to break down into Sub groups mathematical vs operational
-            1. :
-            2. ;
-            3. .
-            4. (
-            5. )
-            6. {
-            7. }
-            8. [
-            9. ]
-            10. #
-            11. :=
-            12. =
-            13. <>
-            14. <
-            15. >
-            16. <=
-            17. >=
-            18. +
-            19. -
-            20. *
-            21. /
-            22. %
+         -Operators for KLUMP: These will need further work to break down into Sub groups mathematical vs operational.
+         These can be assigned a TOKEN that is their LEXEME.
+		A. Punctuation:
+	            1. :
+	            2. ;
+	            3. .
+	            4. (
+	            5. )
+	            6. {
+	            7. }
+	            8. [
+	            9. ]
+		B. Relational Operators:
+	            1. :=
+	            2. =
+	            3. <>
+	            4. <
+	            5. >
+	            6. <=
+	            7. >=
+	            8. +
+	            9. -
+	            10. *
+	            11. /
+	            12. %
+		23.#

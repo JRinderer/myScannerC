@@ -22,7 +22,7 @@
 ------------In order for CMake to work correctly you will need to either modify the attached CMake files
 ------------or if you're using an IDE you can reload the CMakeLists.txt. This will re-apply any updates. If you're using
 ------------and older version than 3.8 you'll need to modify CMakeLists.txt by finding the following:
-------------cmake_minimum_required(VERSION 3.8) and editing. As an example my Ubunutu Linux uses 3.5, I change this and
+------------cmake_minimum_required(VERSION 3.8) and editing. As an example my Ubunutu Linux uses 3.5 I change this and
 ------------reload CMake, which should resolve the problem. However, if your IDE does not allow you to easily reload
 ------------CMake files then you can edit them yourself. You'll need to ensure the directory the files are located in
 ------------changes. Your directory tree will be different than mine, editing these paths should resolve the CMake

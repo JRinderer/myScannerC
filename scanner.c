@@ -118,7 +118,7 @@ int isOperator(char c){
 void writeLnes(char * txt1, char * txt2){
     FILE * flPntr;
     char stngHldr[LIMIT]="";
-    strcat(stngHldr,txt1); //SEGMENTATION FALUT. POSSIBLY DUE TO PASSING CHARS BY POINTER?
+    strcat(stngHldr,txt1);
     strcat(stngHldr, "\t\t");
     strcat(stngHldr,txt2);
     strcat(stngHldr,"\n");
