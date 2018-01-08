@@ -156,3 +156,7 @@
         -Program can now output to a text file in the project folder. Notes for future output destroy any existing file
         assuming the user does not need previous work. This ensures that the new file that's being concatenated to is
         fresh.
+
+        -Next steps: make test to determine other TOKE types - operators, punctuation, etc.
+
+=======================================1/7/2018 - END 18:11 - JRinderer================================================
