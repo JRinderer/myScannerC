@@ -41,7 +41,7 @@ TokenType getTokenType(FILE *filePntr) {
             build2dArry(words,intlArryi,intlArryj, chr, filePntr); //builds the 2d array (forming words)
             wordLineNums[intlArryi] = lneNum;
             if(isKeyWord(words[intlArryi])==0){
-                token[tokeni]="KEYWORD";
+                token[tokeni]=words[intlArryi];
                 tokeni++;
             }else{
                 token[tokeni]="CONST";
@@ -122,7 +122,7 @@ void writeLnes(char * txt1, char * txt2){
     strcat(stngHldr, "\t\t");
     strcat(stngHldr,txt2);
     strcat(stngHldr,"\n");
-    flPntr = fopen("scnr.sc","a");
+    flPntr = fopen("scnr.scan","a");
     fputs(stngHldr,flPntr);
     fclose(flPntr);
 }

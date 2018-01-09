@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
             break;
 
         case 2: // One parameter, use .lan file supplied
-            if ((filePtr = fopen(strcat(argv[1], ".kl"), "r")) == NULL) {
+            if ((filePtr = fopen(strcat(argv[1], ".klump"), "r")) == NULL) {
                 printf("Cannot open input file.\n");
                 exit(1);
             }

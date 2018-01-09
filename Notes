@@ -186,3 +186,11 @@
         E. Re-read KLUMP Grammar, there's nothing for '' or "" and these are typically CHAR or STRING delimiters.
         F. Added the relational operators and punctuation for the language toe systemdefs.h
 
+        -Updates: adjusted scanner.c to save the scanned text document as .scan and the text file to read from as
+        .klump.
+
+        -Closing notes - I don't see any notes on '' pr "" in the documentation for the course. Unsure of how the
+        language will look. It's possible we aren't using these features and perhaps the keywords will indicate this?
+
+=======================================1/8/2018 - END 19:24 JRinderer==================================================
+
