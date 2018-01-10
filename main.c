@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
             break;
 
         default:
-            printf("Syntax: scanner [file] (.lan is implicit)\n");
+            printf("Unable to open file .klump extension is implicit.\n");
             exit(0);
     }
 

@@ -95,6 +95,17 @@ int isKeyWord(char *strn){
     }
     return results;
 }
+int isOperator(char *strn){
+    int i;
+    int result = 1; //1 is default false. If 1 then false 0 is true.
+
+    for(i=0; i<42; i++){
+        if(!strcmp(Operators[i],strn)){
+            result=0;
+        }
+    }
+    return result;
+}
 //=====================================================================================================================
 //*********************************************************************************************************************
 //=====================this function determines if the string is a constant like a string of text chars/numbers========
@@ -131,7 +142,7 @@ void writeLnes(char * txt1, char * txt2){
 //=====================this function builds a 2d array of continuous chars (ints included)=============================
 void build2dArry(char arry[LIMIT][MAX],int itemi, int itemj, char c, FILE * fPtr) {
     arry[itemi][itemj++] = c;
-    while (charType(c = fgetc(fPtr))==1){
+    while (charType(c = fgetc(fPtr))==1){ //||charType(c = fgetc(fPtr))==2
 
         arry[itemi][itemj++]= mkeUprCse(c);
     }

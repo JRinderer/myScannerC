@@ -14,11 +14,13 @@ char *keywords[42] = {"AND", "ARRAY", "ASCII", "BEGIN", "BOOL", "BREAK", "CALL",
                       "REAL", "RECORD", "RETURN", "STRING", "THEN", "TO", "TYPE", "VAR", "WHILE",
                       "WRITE", "WRITELN"};
 
-char *relationalOperators[12] = {":=","=","<>","<",">","<=",">=","+","-","*","/","%"};
+
+//Since we're going to make the tokens the Operator Symbol we can include them all under operators.
+char *Operators[21] = {":=","=","<>","<",">","<=",">=","+","-","*","/","%",":",";",".","(",")","[","]","{","}"};
 
 //char otherOperators[6] = {':', '+', '-', '*', '/', '%'};
 
-char punct[9] = {':',';','.','(',')','{','}','[',']'};
+//char punct[9] = {':',';','.','(',')','{','}','[',']'};
 
 int intlArryi = 0, intlArryj =0;
 
