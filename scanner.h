@@ -10,10 +10,12 @@ int testChar(char, char);
 char getNxtPntdVal(FILE *);
 int charType(char);
 void build2dArry(char arry[LIMIT][MAX],int, int, char, FILE *);
+void build2dArryOps(char arry[LIMIT][MAX],int, int, char, FILE *);
 int isExAcceptableChar(char);
 void printTokens();
 int isKeyWord(char *);
 void build2dArryNum(char arry[LIMIT][MAX],int, int, char, FILE *);
 void writeLnes(char *, char *);
+int is2dOperator(char *);
 
 #endif //SCANNER01_SCANNER_H

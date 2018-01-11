@@ -15,8 +15,11 @@ char *keywords[42] = {"AND", "ARRAY", "ASCII", "BEGIN", "BOOL", "BREAK", "CALL",
                       "WRITE", "WRITELN"};
 
 
-//Since we're going to make the tokens the Operator Symbol we can include them all under operators.
-char *Operators[21] = {":=","=","<>","<",">","<=",">=","+","-","*","/","%",":",";",".","(",")","[","]","{","}"};
+//Some operators are two dimensional and have to be tested as such
+char *TwoDimOps[4] = {":=","<>","<=",">="};
+
+//char *OneDimOps[17] = {"<",">","+","-","*","/","%",":",";",".","(",")","[","]","{","}","="};
+
 
 //char otherOperators[6] = {':', '+', '-', '*', '/', '%'};
 
@@ -31,6 +34,10 @@ int wordLineNums[LIMIT];
 char * token[42]; // to store TOKEN TYPE not sure this is needed.
 int tokeni = 0;
 int tokenLineNums[LIMIT];
+
+char TwoDOps[LIMIT][MAX];
+
+char OneDOps[LIMIT];
 
 char lexeme[LIMIT][MAX]; // this is the literal string VALUE IF, X, 2, 3, ANDREW, etc.
 int lexemei = 0; lexemej = 0;

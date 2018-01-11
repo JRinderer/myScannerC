@@ -192,5 +192,32 @@
         -Closing notes - I don't see any notes on '' pr "" in the documentation for the course. Unsure of how the
         language will look. It's possible we aren't using these features and perhaps the keywords will indicate this?
 
-=======================================1/8/2018 - END 19:24 JRinderer==================================================
+=======================================1/8/2018 - END 19:24 - JRinderer================================================
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+=======================================1/9/2018 - START - 20:00 - JRinderer============================================
+    ********Summary: added function for testing punctuation types. Seems to be causing a segmentation fault.
+
+        -This could be due to the size of the array being violated (still need to test and ensure bounds are protected).
+
+        -Not sure what falls under punctuations: < > <> = + ... etc. This needs to be addressed as well.
+=======================================1/9/2018 - END - 21:21 - JRinderer==============================================
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+=======================================1/10/2018 - START - 20:00 - JRinderer===========================================
+    ********Summary: Today I'm focusing on picking up the punctuations and making their token behavior mimic that of
+    key words.
+
+        -Completed the 2 dimensional aspect of punctuations. This includes <> >= <= :=.
+
+        -Not sure if I need to test, or build an array for 1 dimensional aspect of punctuation. It's possible that I
+        can get away with testing to determine if it's 2d, and if so build it like I did with words. Otherwise make the
+        TOKEN = CHAR and then populate as such. This would ensure I have proper error checking and might need to build
+        the 1d array regardless. So while I may not need to test for 1d array, I will still need it for error checking
+        most likely. It's also possible that non relevant characters COULD slip through this. Will test out without
+        1d array, it's commented out for now.
+
+        -Succesfully grabing NUMBERS CONSTANTS (this needs to be refined further as IDENTIFIERS are being considered
+        constants due to a misreading of the text. Correct this to consider CONSTANTS between ' ') and punctuations.
+=======================================1/10/2018 - END - 22:09 - JRinderer=============================================
 

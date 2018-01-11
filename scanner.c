@@ -16,7 +16,6 @@ TokenType getTokenType(FILE *filePntr) {
     char chr;
 //-------------------------------------Loop through Chars and scan to determine types----------------------------------
     while((chr=fgetc(filePntr))!=EOF){
-        chr=mkeUprCse(chr);
         //-----------------------------Check to see if end of line if so increment next line---------------------------
         if (testChar(chr,'\n')==0|| testChar(chr,NULL)==0){
             lneNum++;
@@ -38,6 +37,7 @@ TokenType getTokenType(FILE *filePntr) {
         chrType = charType(chr);
 
         if (chrType==1){
+            chr=mkeUprCse(chr);
             build2dArry(words,intlArryi,intlArryj, chr, filePntr); //builds the 2d array (forming words)
             wordLineNums[intlArryi] = lneNum;
             if(isKeyWord(words[intlArryi])==0){
@@ -58,8 +58,17 @@ TokenType getTokenType(FILE *filePntr) {
             intlArryi++;intlArryj = 0;
             fseek(filePntr, -1, SEEK_CUR);
         }else if(chrType==3){
-            printf("This is the default\n"); //Here will require a deeper dive like in word to determine if the data
-                                            //type fits in a particular type. Operator punctuation. etc.
+            build2dArryOps(words,intlArryi,intlArryj,chr,filePntr);
+            if(is2dOperator(words[intlArryi])==1){
+                //printf("Result is a 1d operator");
+                token[tokeni]=words[intlArryi];
+                tokeni++;
+            } else{
+                token[tokeni]=words[intlArryi];
+                tokeni++;
+            }
+            intlArryi++;intlArryj = 0;
+            fseek(filePntr, -1, SEEK_CUR);
         }
     }
     printTokens();
@@ -72,12 +81,14 @@ TokenType getTokenType(FILE *filePntr) {
 void printTokens(){
     int i;
     for(i = 0; i<tokeni; i++){
-        if(token[i]!="NUMBER"){
+        if(!strcmp(token[i],words[i])){
             writeLnes(token[i],words[i]);
             //printf("%s\t\t%s\n",token[i],words[i]);
-        }else{
+        }else if(!strcmp(token[i],"NUMBER")){
             writeLnes(token[i],nums[i]);
             //printf("%s\t\t%s\n",token[i],nums[i]);
+        }else{
+            writeLnes(token[i],words[i]);
         }
     }
 }
@@ -95,13 +106,13 @@ int isKeyWord(char *strn){
     }
     return results;
 }
-int isOperator(char *strn){
+int is2dOperator(char *strn){
     int i;
-    int result = 1; //1 is default false. If 1 then false 0 is true.
+    int result = 0; //0 indicates a 2d operator. 1 indicates 1 d operator
 
-    for(i=0; i<42; i++){
-        if(!strcmp(Operators[i],strn)){
-            result=0;
+    for(i=0; i<4; i++){
+        if(!strcmp(TwoDimOps[i],strn)){
+            result=1;
         }
     }
     return result;
@@ -158,6 +169,14 @@ void build2dArryNum(char arry[LIMIT][MAX],int itemi, int itemj, char c, FILE * f
     arry[itemi][itemj] = '\0';
 }
 
+void build2dArryOps(char arry[LIMIT][MAX],int itemi, int itemj, char c, FILE * fPtr) {
+    arry[itemi][itemj++] = c;
+    while (charType(c = fgetc(fPtr))==3){
+
+        arry[itemi][itemj++]= c;
+    }
+    arry[itemi][itemj] = '\0';
+}
 
 //=====================================================================================================================
 //*********************************************************************************************************************

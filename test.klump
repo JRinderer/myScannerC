@@ -1,4 +1,11 @@
 if (a > 0)
-	then b:=1+5;
+	then b:= 1 + 5;
 	else b:=2;
+if b <> x
+	then a>10;
+	else b <> 12;
+
+if 10 < 12 and 11 <= 13
+	then a <> c;
+	else b := 12
 
