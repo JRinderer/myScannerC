@@ -1,5 +1,5 @@
-/opt/clion/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/jrinder/CLionProjects/myScannerC
--- The C compiler identification is GNU 7.2.1
+/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/jrinder/CLionProjects/myScannerC
+-- The C compiler identification is GNU 5.4.0
 -- Check for working C compiler: /usr/bin/cc
 -- Check for working C compiler: /usr/bin/cc -- works
 -- Detecting C compiler ABI info

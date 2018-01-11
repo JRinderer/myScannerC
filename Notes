@@ -220,4 +220,12 @@
         -Succesfully grabing NUMBERS CONSTANTS (this needs to be refined further as IDENTIFIERS are being considered
         constants due to a misreading of the text. Correct this to consider CONSTANTS between ' ') and punctuations.
 =======================================1/10/2018 - END - 22:09 - JRinderer=============================================
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+=======================================1/11/2018 - START - 13:22 - JRinderer===========================================
+    ********Summary: Need to start working on a function to check for ''. This will help us determine any strings that
+    could exist. Some possible obstacles to think about: if ' shows up in the string we don't want to end strings
+    prematurely. This can include strings like There's or Johns'.
+
+        -Challenge: How to store the ' and compare it to the char passed to the function.
 
