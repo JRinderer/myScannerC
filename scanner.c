@@ -38,7 +38,7 @@ TokenType getTokenType(FILE *filePntr) {
 
         if (chrType==1){
             chr=mkeUprCse(chr);
-            build2dArry(words,intlArryi,intlArryj, chr, filePntr); //builds the 2d array (forming words)
+            build2dArry(words,intlArryi,intlArryj, chr, filePntr, chrType); //builds the 2d array (forming words)
             wordLineNums[intlArryi] = lneNum;
             if(isKeyWord(words[intlArryi])==0){
                 token[tokeni]=words[intlArryi];
@@ -51,14 +51,15 @@ TokenType getTokenType(FILE *filePntr) {
             intlArryi++;intlArryj = 0;
             fseek(filePntr, -1, SEEK_CUR);
         }else if(chrType==2){
-            build2dArryNum(nums,intlArryi,intlArryj,chr,filePntr);
-            token[tokeni]="NUMBER";
+            build2dArry(nums,intlArryi,intlArryj,chr,filePntr, chrType);
+            //need to check if char after number is a period and if so treat it as decimal.
+            token[tokeni]="NUMERIC";
             tokeni++;
             wordLineNums[intlArryi] = lneNum;
             intlArryi++;intlArryj = 0;
             fseek(filePntr, -1, SEEK_CUR);
         }else if(chrType==3){
-            build2dArryOps(words,intlArryi,intlArryj,chr,filePntr);
+            build2dArry(words,intlArryi,intlArryj,chr,filePntr, chrType);
             if(is2dOperator(words[intlArryi])==1){
                 //printf("Result is a 1d operator");
                 token[tokeni]=words[intlArryi];
@@ -84,7 +85,7 @@ void printTokens(){
         if(!strcmp(token[i],words[i])){
             writeLnes(token[i],words[i]);
             //printf("%s\t\t%s\n",token[i],words[i]);
-        }else if(!strcmp(token[i],"NUMBER")){
+        }else if(!strcmp(token[i],"NUMERIC")){
             writeLnes(token[i],nums[i]);
             //printf("%s\t\t%s\n",token[i],nums[i]);
         }else{
@@ -151,15 +152,15 @@ void writeLnes(char * txt1, char * txt2){
 //=====================================================================================================================
 //*********************************************************************************************************************
 //=====================this function builds a 2d array of continuous chars (ints included)=============================
-void build2dArry(char arry[LIMIT][MAX],int itemi, int itemj, char c, FILE * fPtr) {
+void build2dArry(char arry[LIMIT][MAX],int itemi, int itemj, char c, FILE * fPtr, int charsType) {
     arry[itemi][itemj++] = c;
-    while (charType(c = fgetc(fPtr))==1){ //||charType(c = fgetc(fPtr))==2
+    while (charType(c = fgetc(fPtr))==charsType){ //||charType(c = fgetc(fPtr))==2
 
         arry[itemi][itemj++]= mkeUprCse(c);
     }
     arry[itemi][itemj] = '\0';
 }
-
+/*============================THE FUNCTIONS BETWEEN THIS ARE NOT NECESSARY REFERENCE ONLY=============================
 void build2dArryNum(char arry[LIMIT][MAX],int itemi, int itemj, char c, FILE * fPtr) {
     arry[itemi][itemj++] = c;
     while (charType(c = fgetc(fPtr))==2){
@@ -177,7 +178,7 @@ void build2dArryOps(char arry[LIMIT][MAX],int itemi, int itemj, char c, FILE * f
     }
     arry[itemi][itemj] = '\0';
 }
-
+=====================================================================================================================*/
 //=====================================================================================================================
 //*********************************************************************************************************************
 //=====================Gets value from pointer in file consider removing===============================================
@@ -220,7 +221,7 @@ int isExAcceptableChar(char c) {
     if (c == '.' || c == '(' || c == ')' || c == ',' || c =='{' || c == '}' ||
         c == ';' || c == '[' || c == ']' ||
         c == ':' || c == '+' || c == '-' || c == '*' || c == '/' || c == '%' ||
-        c == '=' || c == '<' || c == '>' || c == '!' || c == '"' || c == '#' ||
+        c == '=' || c == '<' || c == '>' || c == '!' || c == '"' || c == '#' || c=='\''
         /* || c == '#' */ ) {
 
         return 1;

@@ -9,7 +9,7 @@ char mkeUprCse(char);
 int testChar(char, char);
 char getNxtPntdVal(FILE *);
 int charType(char);
-void build2dArry(char arry[LIMIT][MAX],int, int, char, FILE *);
+void build2dArry(char arry[LIMIT][MAX],int, int, char, FILE *, int);
 void build2dArryOps(char arry[LIMIT][MAX],int, int, char, FILE *);
 int isExAcceptableChar(char);
 void printTokens();

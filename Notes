@@ -229,3 +229,34 @@
 
         -Challenge: How to store the ' and compare it to the char passed to the function.
 
+        -NUMBER is being associated with the KEYWORD NUMBER and real INTEGERS. Possibly consider making real numbers
+        NUMERIC instead of NUMBER. True integers (whole numbers) are tracked as NUMERIC.
+
+        -Still need to find decimal numbers as punctuation is seperating them as different numbers.
+
+        -Solved storing the ' in a char variable for comparison with escape char \.
+
+        -To trim down size move all 2dArray functions into one. Send the type of char and compare.
+
+        -From a quick comparison of the demo scanner file I need to account for CSTRINGS, decimals, IDENTIFIERS are
+        showing up as CONSTANTS. This is due to not properly picking up CSTRINGS.
+
+        -Thoughts on writing a decimal function.
+            -Need to possibly create a new array type called decimal. This would also be a 2d array.
+            -When we build the array check to see if it has a decimal as it's next char. If so we're building as
+            decimal. Not sure if I can do this with the current setup.
+            -The current 2dArray builder is comparing the current char to see if it's a type sent to it (int).
+            -Possibly consider adding as second comparison to see if the next char is a . When testing for non-decimal
+            types simply send he same int so the || statement is essentially nullified.
+            -If so we can continue to build the decimal of numbers until we reach a non number or another.
+
+        -Thoughts on writing CSTRING function.
+            -Need to check if char is '.
+            -If so builds the chars into a word until another ' is detected. Once this is done the CSTRING is completed.
+
+        -Thoughts on IDENTIFIERS showing as CONSTANTS.
+            -This might actually be easy to resolve without much change.
+            -Since no identifier will contain a ' we can change the CONSTANT portion in the current word code to be an
+            identifier.
+            -Will still need to check for CSTRING this will need to be added to the word code.
+=======================================1/11/2018 - END - 20:43 - JRinderer=============================================

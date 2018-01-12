@@ -6,7 +6,7 @@
 #define SCANNER01_TOKEN_H
 
 #define MAX 80
-#define LIMIT 300
+#define LIMIT 3000
 
 typedef enum {
     CONSTANT,
