@@ -260,3 +260,17 @@
             identifier.
             -Will still need to check for CSTRING this will need to be added to the word code.
 =======================================1/11/2018 - END - 20:43 - JRinderer=============================================
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+=======================================1/25/2018 - START - 19:53 - JRinderer============================================
+    ********Summary:Run the test input and exam output against against the provided docs. Issue seems to be occuring
+    )); character. This seems to merge them together instead of keep them seperated.
+
+        -This is due to me not differentiating between chars that are 2d and 1d. The function is building the chars
+        into a 2d array regardless. I need to test to determine if the char is one of the chars from the 2d array.
+
+        -A possible issue I need to consider with this is the fact that some chars are 2d and some are not. = for
+        example is a 1d char. I need to also look ahead and see if the char AFTER the current char exists as a 2d array.
+        If so then it could be a 2d array. Must rewrite this function.
+
+        -Still need to write a function to see if a '' is present and if it's a string.
