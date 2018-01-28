@@ -17,6 +17,7 @@ TokenType getTokenType(FILE *filePntr) {
     char chr;
     char lookAheadChr;
 //-------------------------------------Loop through Chars and scan to determine types----------------------------------
+    restart:
     while((chr=fgetc(filePntr))!=EOF){
         //-----------------------------Check to see if end of line if so increment next line---------------------------
         if (testChar(chr,'\n')==0|| testChar(chr,NULL)==0){
@@ -24,18 +25,29 @@ TokenType getTokenType(FILE *filePntr) {
         }
 
         //-----------------------------Check to see if a comment has been made-----------------------------------------
-        if(chr=='{'){
-            int cmntOver=1;
+        //=============================COMMENT CODE====================================================================
+        if(chr=='{'){ //if a comment is being made we need to find the end of the comment
+            int endCmt = 1; //1 indicates false
 
-            do{
-                lookAheadChr=getNxtPntdVal(filePntr);//This keeps looping back and never going to next line...
-                if(lookAheadChr=='}'){
-                    cmntOver==0;
-                }if(lookAheadChr!='\n'){
-                    cmntOver==1;
+            while (endCmt==1){
+                if(lookAheadChr=getNxtPntdVal(filePntr)=='}'){
+                    endCmt=0;//This will end the loop though I don't think it's technically necessary... left in as it
+                    //it seems wise.
+
+                    goto restart;//once we reach the last '}' we can go back to the top of the loop and get the next
+                    //char. This lets us ignore the text in the bracket and the ending bracket. We don't rewind the
+                    //pointer so that we can start at the next char after '}
+
+                }else{
+                    endCmt==1;
                 }
-            }while(cmntOver!=0);
-            fseek(filePntr,-1,SEEK_CUR);
+            }
+        //=============================================================================================================
+
+
+            //Scratch goes between
+
+            //Scratch goes between
         }
         if((testChar(chr,'/'))==0){
             if(getNxtPntdVal(filePntr)=='/'){
@@ -59,7 +71,7 @@ TokenType getTokenType(FILE *filePntr) {
                 token[tokeni]=words[intlArryi];
                 tokeni++;
             }else{
-                token[tokeni]="CONST";
+                token[tokeni]="IDENTIF";
                 tokeni++;
             }
             //printf("The Word is %s",words[wordi]);
@@ -79,6 +91,11 @@ TokenType getTokenType(FILE *filePntr) {
             tokeni++;
             intlArryi++;intlArryj = 0;
             fseek(filePntr, -1, SEEK_CUR);
+        }else if(chrType==4){
+            buildString(words,intlArryi,intlArryj,chr,filePntr,chrType,'\'');
+            token[tokeni]="CSTRING";
+            tokeni++;
+            intlArryi++;intlArryj=0;
         }
     }
     printTokens();
@@ -151,7 +168,7 @@ void writeLnes(char * txt1, char * txt2){
     FILE * flPntr;
     char stngHldr[LIMIT]="";
     strcat(stngHldr,txt1);
-    strcat(stngHldr, "\t\t");
+    strcat(stngHldr, "\t\t\t");
     strcat(stngHldr,txt2);
     strcat(stngHldr,"\n");
     flPntr = fopen("scnr.scan","a");
@@ -168,6 +185,27 @@ void build2dArry(char arry[LIMIT][MAX],int itemi, int itemj, char c, FILE * fPtr
         arry[itemi][itemj++]= mkeUprCse(c);
     }
     arry[itemi][itemj] = '\0';
+}
+//=====================this function builds a CSTRING possible to use build2dArray instead?===========================
+void buildString(char arry[LIMIT][MAX],int itemi, int itemj, char c, FILE * fPtr, int charsType, char endr) {
+    c=mkeUprCse(c);
+    arry[itemi][itemj++]=c;
+    int endStrn=1;
+    while(endStrn==1){
+        if(c=fgetc(fPtr)=='\''){
+            endStrn=0;
+            fseek(fPtr, -1, SEEK_CUR);
+            c=fgetc(fPtr);
+            c=mkeUprCse(c);
+            arry[itemi][itemj++]=c;
+        }else{
+            fseek(fPtr, -1, SEEK_CUR);
+            c=fgetc(fPtr);
+            c=mkeUprCse(c);
+            arry[itemi][itemj++]=c;
+        }
+    }
+    arry[itemi][itemj]='\0';
 }
 /*============================THE FUNCTIONS BETWEEN THIS ARE NOT NECESSARY REFERENCE ONLY=============================
 void build2dArryNum(char arry[LIMIT][MAX],int itemi, int itemj, char c, FILE * fPtr) {
@@ -261,8 +299,10 @@ int charType(char c) {
         return 1;
     }else if(isdigit(c)){
         return 2;
-    }else if(ispunct(c)){
+    }else if(ispunct(c) && c!='\''){
         return 3;
+    }else if(c=='\''){
+        return 4; //4 indicates a CSTRING. We will need to find a way to use the 2d array builder to build a CSTRING
     }
 }
 //=====================================================================================================================

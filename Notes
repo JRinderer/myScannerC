@@ -279,6 +279,30 @@
         Builder for Operators. This builder also uses another function to ensure that the next character is a relevant.
         A flaw in the initial build is that it doesn't also ensure that the character relationship is valid. Example:
         := and =: are both valid; though this violates the rules. Need to also ensure that the word being built is a
-        valid
+        valid.
+=======================================1/27/2018 - END - 22:30 - JRinderer - SPECIAL NOTE==============================
+    ********Special note: Due to hard resetting my github on these some notes were lost. This was due to moving back
+    and forth between 2 computers while I resolved the bugs. Specifically in getting rid of comments. Since then I've
+    also resolve the bugs with the building of operators (<>, := etc) This error was due to how I was scanning. I was
+    not effectively checking to ensure that the chars I was feeding to the scanner as 2d array's were in fact a valid
+    word. I resolved this, as well as the comments. The key was to check each char that was a punctuation and then
+    validate it against an array of chars that make up the 2d punctuations. Once this was done I used a temporary array
+    to store the word, and then compare it to the 2d array list to ensure that the word was valid. The comments code
+    was fairly simple to work out and should be self explanatory with the comments. It will be marked off with the below
+    ===========COMENT CODE============= so that it can easily be found.
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+=======================================1/28/2018 - START - 10:29 - JRinderer===========================================
+    ********Summary: Comments and 2d arrays are now handled correctly. The next step is to account for strings. Since
+    2d and 1d punctuations should now be handled correctly I should be able to use similar code to the comments loop to
+    implement a "stringBuilder" function and set the token as CSTRING.
 
-        -
+        -Able to reproduce the same results as Doc on the test.klump and test.scan exception is ASCII... emailed in
+        regards to difference between ASCII and CSTRING.
+
+        -Scanner should now be completed. Will test on other files to see how scanner handles them, then compare to
+        Docs.
+
+        -If we need to add ASCII we need to determine how we figure out what's an ASCII vs a CSTRING. At what point
+        does a char become a CSTRING or ASCII?
+=======================================1/28/2018 - END - TIME - JRinderer==============================================
