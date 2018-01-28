@@ -6,6 +6,7 @@
 #include <strings.h>
 #include <ctype.h>
 #include <memory.h>
+#include <stdlib.h>
 
 #include "token.h"
 #include "scanner.h"
@@ -14,6 +15,7 @@
 TokenType getTokenType(FILE *filePntr) {
     int lneNum = 1;
     char chr;
+    char lookAheadChr;
 //-------------------------------------Loop through Chars and scan to determine types----------------------------------
     while((chr=fgetc(filePntr))!=EOF){
         //-----------------------------Check to see if end of line if so increment next line---------------------------
@@ -22,6 +24,19 @@ TokenType getTokenType(FILE *filePntr) {
         }
 
         //-----------------------------Check to see if a comment has been made-----------------------------------------
+        if(chr=='{'){
+            int cmntOver=1;
+
+            do{
+                lookAheadChr=getNxtPntdVal(filePntr);//This keeps looping back and never going to next line...
+                if(lookAheadChr=='}'){
+                    cmntOver==0;
+                }if(lookAheadChr!='\n'){
+                    cmntOver==1;
+                }
+            }while(cmntOver!=0);
+            fseek(filePntr,-1,SEEK_CUR);
+        }
         if((testChar(chr,'/'))==0){
             if(getNxtPntdVal(filePntr)=='/'){
                 while(getNxtPntdVal(filePntr)!='\n'){
@@ -59,15 +74,9 @@ TokenType getTokenType(FILE *filePntr) {
             intlArryi++;intlArryj = 0;
             fseek(filePntr, -1, SEEK_CUR);
         }else if(chrType==3){
-            build2dArry(words,intlArryi,intlArryj,chr,filePntr, chrType);
-            if(is2dOperator(words[intlArryi])==1){
-                //printf("Result is a 1d operator");
-                token[tokeni]=words[intlArryi];
-                tokeni++;
-            } else{
-                token[tokeni]=words[intlArryi];
-                tokeni++;
-            }
+            build2dArryOps(words,intlArryi,intlArryj,chr,filePntr);
+            token[tokeni]=words[intlArryi];
+            tokeni++;
             intlArryi++;intlArryj = 0;
             fseek(filePntr, -1, SEEK_CUR);
         }
@@ -109,11 +118,11 @@ int isKeyWord(char *strn){
 }
 int is2dOperator(char *strn){
     int i;
-    int result = 0; //0 indicates a 2d operator. 1 indicates 1 d operator
+    int result = 1; //0 indicates a 2d operator. 1 indicates 1 d operator
 
     for(i=0; i<4; i++){
         if(!strcmp(TwoDimOps[i],strn)){
-            result=1;
+            result=0;
         }
     }
     return result;
@@ -169,21 +178,63 @@ void build2dArryNum(char arry[LIMIT][MAX],int itemi, int itemj, char c, FILE * f
     }
     arry[itemi][itemj] = '\0';
 }
-
+*/
 void build2dArryOps(char arry[LIMIT][MAX],int itemi, int itemj, char c, FILE * fPtr) {
     arry[itemi][itemj++] = c;
-    while (charType(c = fgetc(fPtr))==3){
+    int count = 0;
+    int size = 1;
+    int twDpunc=1; //0 true 1 false;
+    char oldChr=c;
 
-        arry[itemi][itemj++]= c;
+    //First determine if this char is on the list of chars that could be 2dim
+    size = sizeOfPunctArry(c);
+
+    while (charType(c = fgetc(fPtr))==3 && (twDpunc = isPunctPartOf2D(c, oldChr))==0){
+
+        twDpunc = isPunctPartOf2D(c,oldChr);
+
+            arry[itemi][itemj++] = c;
+            //-----TEST TO SEE IF VALID 2D array----
+            count++;
     }
     arry[itemi][itemj] = '\0';
 }
-=====================================================================================================================*/
+
+int sizeOfPunctArry(char c){
+    for(int i=0;i<4;i++){
+        if(c==indvTwoDimOps[i]){
+            return 2;
+        }else {
+            return 1;
+        }
+    }
+}
+
+int isPunctPartOf2D(char c, char c2) {
+    int results =1;
+    char strn[LIMIT][MAX];
+    int x=0,y=0;
+    strn[x][y]="";
+    strn[x][y++]="";
+
+    for (int i = 0; i < 4; i++) {
+        if (c == indvTwoDimOps[i]) {
+            strn[0][0]=c2;
+            strn[0][1]=c;
+            results=is2dOperator(strn[x]);
+        }
+
+    }
+    return results;
+}
+//=====================================================================================================================
 //=====================================================================================================================
 //*********************************************************************************************************************
 //=====================Gets value from pointer in file consider removing===============================================
 char getNxtPntdVal(FILE *fPntr) {
-    return (fgetc(fPntr));
+    char holder;
+    holder = fgetc(fPntr);
+    return holder;
 }
 //=====================================================================================================================
 //*********************************************************************************************************************

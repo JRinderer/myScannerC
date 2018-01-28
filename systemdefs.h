@@ -18,7 +18,9 @@ char *keywords[42] = {"AND", "ARRAY", "ASCII", "BEGIN", "BOOL", "BREAK", "CALL",
 //Some operators are two dimensional and have to be tested as such
 char *TwoDimOps[4] = {":=","<>","<=",">="};
 
-char *OneDimOps[18] = {"<",">","+","-","*","/","%",":",";",".","(",")","[","]","{","}","=","'"};
+char indvTwoDimOps[4] = {':','=','>','<'};
+
+char *OneDimOps[16] = {"<",">","+","-","*","/","%",":",";",".","(",")","[","]","=","'"};
 
 
 //char otherOperators[6] = {':', '+', '-', '*', '/', '%'};

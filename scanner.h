@@ -17,5 +17,6 @@ int isKeyWord(char *);
 void build2dArryNum(char arry[LIMIT][MAX],int, int, char, FILE *);
 void writeLnes(char *, char *);
 int is2dOperator(char *);
-
+int sizeOfPunctArry(char);
+int isPunctPartOf2D(char, char);
 #endif //SCANNER01_SCANNER_H

@@ -274,3 +274,11 @@
         If so then it could be a 2d array. Must rewrite this function.
 
         -Still need to write a function to see if a '' is present and if it's a string.
+
+        -Due to the complexity I've found in scanning chars and building them into words I've re-added the 2dArray
+        Builder for Operators. This builder also uses another function to ensure that the next character is a relevant.
+        A flaw in the initial build is that it doesn't also ensure that the character relationship is valid. Example:
+        := and =: are both valid; though this violates the rules. Need to also ensure that the word being built is a
+        valid
+
+        -

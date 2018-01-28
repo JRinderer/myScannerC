@@ -1,15 +1,3 @@
-global
-
-proc
-  factorial (n : int        ) : int;
-  fibonacci (n : int        ) : int;
-  strange   (n : int,c : int);
-
-procedure main;
-dcl
-  i     : int;
-  start : int;
-  count : int;
 begin {main}
   for i := 1 to 20
     writeln (i,' factorial is: ',factorial (i));

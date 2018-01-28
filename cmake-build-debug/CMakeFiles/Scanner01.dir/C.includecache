@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -28,6 +28,8 @@ strings.h
 ctype.h
 -
 memory.h
+-
+stdlib.h
 -
 token.h
 /home/jrinder/CLionProjects/myScannerC/token.h
