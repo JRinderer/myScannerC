@@ -306,3 +306,7 @@
         -If we need to add ASCII we need to determine how we figure out what's an ASCII vs a CSTRING. At what point
         does a char become a CSTRING or ASCII?
 =======================================1/28/2018 - END - TIME - JRinderer==============================================
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+=======================================2/6/2018 - Start - 20:01 - JRinderer============================================
+    ********Summary: Still need to handle decimals correctly. They are currently split up as 1 . 5. 

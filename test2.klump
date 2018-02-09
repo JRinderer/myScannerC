@@ -47,7 +47,7 @@ begin {strange}
          end;
     else write (n,' ');
   if (n % 2 = 0)
-    then call strange (n/2,c+1);
+    then call strange (n/2,c+1.5);
     else call strange (3*n + 1,c+1);
 end   {strange}
 .

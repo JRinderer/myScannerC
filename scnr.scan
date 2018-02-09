@@ -196,6 +196,7 @@ THEN			THEN
 DO			DO
 ;			;
 WRITELN			WRITELN
+WRITELN			WRITELN
 ;			;
 RETURN			RETURN
 ;			;
@@ -228,6 +229,8 @@ NUMERIC			2
 IDENTIF			C
 +			+
 NUMERIC			1
+.			.
+NUMERIC			5
 )			)
 ;			;
 ELSE			ELSE
